@@ -84,8 +84,6 @@ object DataSummary{
 
 
 			val newDF = d.foldLeft(filteredDf){case(tempdf, x) => x.ndt match {
-				case "integer" => tempdf.withColumn(x.ecn, col(x.ecn).cast(x.ndt))
-				case "double" => tempdf.withColumn(x.ecn, col(x.ecn).cast(x.ndt))
 				case "date" => tempdf.withColumn(x.ecn, to_date(col(x.ecn),x.de))
 				case _ =>  tempdf.withColumn(x.ecn, col(x.ecn).cast(x.ndt))
 			}}
